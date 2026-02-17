@@ -1,8 +1,11 @@
 {
-  "name": "bot",
+  "name": "community-bot",
   "version": "1.0.0",
+  "description": "Bot Discord by Xyliq",
   "main": "index.js",
+  "type": "module",
   "dependencies": {
-    "discord.js": "^14.0.0"
+    "discord.js": "^14.11.0",
+    "dotenv": "^16.3.1"
   }
 }
