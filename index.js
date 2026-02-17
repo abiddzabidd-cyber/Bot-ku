@@ -9,19 +9,19 @@ const client = new Client({ intents: [
 
 client.on(Events.ClientReady, () => {
   console.log(`Bot online sebagai ${client.user.tag}`);
-  client.user.setActivity('Created by Abid', { type: 'PLAYING' });
+  client.user.setActivity('Created by Xyliq', { type: 'PLAYING' });
 });
 
 client.on(Events.GuildMemberAdd, member => {
-  const channel = member.guild.channels.cache.find(ch => ch.name === 'general');
+  const channel = member.guild.channels.cache.find(ch => ch.name === 'welcome');
   if (!channel) return;
   channel.send(`Selamat datang ${member} di server! 🎉`);
 });
 
 client.on(Events.GuildMemberRemove, member => {
-  const channel = member.guild.channels.cache.find(ch => ch.name === 'general');
+  const channel = member.guild.channels.cache.find(ch => ch.name === 'welcome');
   if (!channel) return;
-  channel.send(`Sayang banget ${member.user.tag} meninggalkan server 😢`);
+  channel.send(`goodbye ${member.user.tag} menginggalkan server`);
 });
 
 client.login(process.env.TOKEN);
