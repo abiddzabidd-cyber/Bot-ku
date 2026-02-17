@@ -1,27 +1,20 @@
 import { Client, GatewayIntentBits, Events } from 'discord.js';
 import 'dotenv/config';
 
-const client = new Client({ intents: [
-  GatewayIntentBits.Guilds,
-  GatewayIntentBits.GuildMembers,
-  GatewayIntentBits.GuildMessages
-]});
+// Hanya intents dasar supaya bot ga crash
+const client = new Client({
+  intents: [
+    GatewayIntentBits.Guilds
+  ]
+});
 
+// Saat bot siap
 client.on(Events.ClientReady, () => {
   console.log(`Bot online sebagai ${client.user.tag}`);
-  client.user.setActivity('Created by Xyliq', { type: 'PLAYING' });
+
+  // Status / deskripsi bot
+  client.user.setActivity('Created by | Xyliq', { type: 'PLAYING' });
 });
 
-client.on(Events.GuildMemberAdd, member => {
-  const channel = member.guild.channels.cache.find(ch => ch.name === 'welcome');
-  if (!channel) return;
-  channel.send(`Selamat datang ${member} di server! 🎉`);
-});
-
-client.on(Events.GuildMemberRemove, member => {
-  const channel = member.guild.channels.cache.find(ch => ch.name === 'welcome');
-  if (!channel) return;
-  channel.send(`goodbye ${member.user.tag} menginggalkan server`);
-});
-
+// Login bot pakai token
 client.login(process.env.TOKEN);
